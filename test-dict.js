@@ -3,8 +3,31 @@ const fs = require('fs');
 const fsp = fs.promises;
 
 const words_dir = 'words/';
+console.log();
 
 (async () => {
+  let sample_text = process.argv[2] || await create_sample_word();
+
+  console.log('-- sample_text --')
+  console.log(sample_text)
+
+  //kuromojiで形態素解析する
+  kuromoji.builder({ dicPath: "dist/" }).build(function (err, tokenizer) {
+      // tokenizer is ready
+      let result = tokenizer.tokenize(sample_text);
+      console.log('----------------')
+      console.log(Object.keys(result[0]).join(','))
+      result.forEach(v=>{
+        console.log(Object.values(v).join(','))
+      })
+      console.log('----------------')
+      console.log(JSON.stringify(result,null,0))
+  });
+})();
+
+//サンプル文章を作る
+const create_sample_word = async () => {
+
   const words = await fsp.readdir(words_dir)
 
   //csvファイルを読み込む
@@ -25,19 +48,5 @@ const words_dir = 'words/';
 
   //適当な名詞と名詞以外を組み合わせて文章を作る
   let sample_text = `こんにちは。${maybe_meishi}${maybe_not_meishi}です。`
-  console.log('-- sample_text --')
-  console.log(sample_text)
-
-  //kuromojiで形態素解析する
-  kuromoji.builder({ dicPath: "dist/" }).build(function (err, tokenizer) {
-      // tokenizer is ready
-      let result = tokenizer.tokenize(sample_text);
-      console.log('----------------')
-      console.log(Object.keys(result[0]).join(','))
-      result.forEach(v=>{
-        console.log(Object.values(v).join(','))
-      })
-      console.log('----------------')
-      console.log(JSON.stringify(result,null,0))
-  });
-})();
+  return sample_text;
+};

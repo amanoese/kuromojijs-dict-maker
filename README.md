@@ -2,7 +2,7 @@ kuromojijs-dict-maker
 ---
 
 kuromoji.js で利用できる辞書をつくるためのシンプルなツールです。  
-デフォルトではipadicに単語を追加した辞書を作成しますが、baseの辞書を変更することもできます。
+デフォルトではipadicに単語を追加した辞書を作成しますが、baseの辞書を変更することもできます。  
 
 ## usage
 
@@ -11,16 +11,43 @@ $ npm install
 ```
 
 words/ にcsvファイルを追加してください。  
-(ファイル名は任意、文字コードは任意です。UTF-8を推奨)  
+(ファイル名と文字コードは任意です。コストは未検証。UTF-8を推奨)  
 
 ```bash
 $ cp example/words.csv words/original.csv
 $ echo ユーザー辞書2,,,,名詞,一般,*,*,*,*,ユーザー辞書2,ユーザージショ2,ユーザージショ2,オリジナル単語 >> words/original.csv
 ```
 
+### 単語を追加したオリジナル辞書を作成する
+
+ipadic辞書に対して、words/ にあるcsvデータを追加して、オリジナル辞書の作成を行います。  
+dict/ 配下に辞書ファイルが出力されます。  
+
+```bash
+$ npm run build
+```
+
+### オリジナル辞書の検証する
+
+以下を実行することで、任意の文章に対するオリジナル辞書の検証を行えます
+
+```bash
+$ npm run test-dict ユーザー辞書を探す
+
+-- sample_text --
+ユーザー辞書を探す
+----------------
+word_id,word_type,word_position,surface_form,pos,pos_detail_1,pos_detail_2,pos_detail_3,conjugated_type,conjugated_form,basic_form,reading,pronunciation
+3921260,KNOWN,1,ユーザー辞書,名詞,一般,*,*,*,*,ユーザー辞書,ユーザージショ,ユーザージショ
+2595140,KNOWN,7,を,助詞,格助詞,一般,*,*,*,を,ヲ,ヲ
+2923480,KNOWN,8,探す,動詞,自立,*,*,五段・サ行,基本形,探す,サガス,サガス
+----------------
+```
+
 ### 辞書の作成と検証までを一貫して行う
 
-ipadicのダウンロード、dict/ 配下に単語を追加した辞書の作成を行います。  
+ipadicのダウンロード、  
+dict/ 配下に単語を追加した辞書の作成を行います。  
 また、追加する単語で作ったテキストでのサンプル実行をおこないます。  
 
 ```bash
@@ -40,27 +67,16 @@ word_id,word_type,word_position,surface_form,pos,pos_detail_1,pos_detail_2,pos_d
 ----------------
 ````
 
-dict/ 配下にあるファイルがオリジナルの辞書です。  
-kuromoji.jsで利用できます。
-
-### 単語を追加した辞書の作成のみ
-
-```bash
-$ npm run build
-```
-
 ### 辞書の作成のみ
 
-baseとなる辞書を base_dic/ にtar.gz形式で配置してください。
+npm run buildでは、ipadic辞書ダウンロードて利用しますが、  
+任意の辞書を利用したい場合以下の方法で実現できます。  
+(未検証)  
+
+baseとなる辞書を base_dic/ にtar.gz形式で配置してください。  
 その後、以下を実行することで辞書を作成できます。
 
 ```bash
 $ npm run make-dict
-```
-
-### オリジナル辞書の検証のみ
-
-```bash
-$ npm run test-dict
 ```
 
