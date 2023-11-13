@@ -1,0 +1,27 @@
+{
+  "name": "kuromojijs-dict-maker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "all": "npm run build && npm run test-dict",
+    "build": "npm run init-dict && npm run make-dict",
+    "init-dict": "node init-dict.js",
+    "make-dict": "node index.js",
+    "test-dict": "node test-dict.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.1",
+    "encoding-japanese": "^2.0.0",
+    "kuromoji": "^0.1.2",
+    "node-gzip": "^1.1.2",
+    "tar": "^6.2.0",
+    "tmp-promise": "^3.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

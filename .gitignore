@@ -1,0 +1,9 @@
+node_modules/
+
+## in/out dir
+dist/*
+base_dic/*
+words/*
+
+## track gitkeep dir
+!**/.gitkeep
