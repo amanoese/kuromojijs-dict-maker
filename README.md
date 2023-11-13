@@ -44,8 +44,25 @@ word_id,word_type,word_position,surface_form,pos,pos_detail_1,pos_detail_2,pos_d
 ----------------
 ```
 
+### 辞書の作成のみ
+
+npm run buildでは、ipadic辞書をダウンロードして利用しますが、  
+任意の辞書を利用したい場合以下の方法で実現できます。  
+(未検証)  
+
+baseとなる辞書を base_dic/ にtar.gz形式で配置してください。  
+その後、以下を実行することで辞書を作成できます。
+
+```bash
+$ npm run make-dict
+```
+
+
+
+
 ### 辞書の作成と検証までを一貫して行う
 
+辞書作成 + 検証を個別に実行するのが面倒なとき用です。  
 ipadicのダウンロード、  
 dict/ 配下に単語を追加した辞書の作成を行います。  
 また、追加する単語で作ったテキストでのサンプル実行をおこないます。  
@@ -66,17 +83,4 @@ word_id,word_type,word_position,surface_form,pos,pos_detail_1,pos_detail_2,pos_d
 2612880,KNOWN,18,。,記号,句点,*,*,*,*,。,。,。
 ----------------
 ````
-
-### 辞書の作成のみ
-
-npm run buildでは、ipadic辞書ダウンロードて利用しますが、  
-任意の辞書を利用したい場合以下の方法で実現できます。  
-(未検証)  
-
-baseとなる辞書を base_dic/ にtar.gz形式で配置してください。  
-その後、以下を実行することで辞書を作成できます。
-
-```bash
-$ npm run make-dict
-```
 
