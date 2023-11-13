@@ -32,15 +32,15 @@ $ npm run build
 以下を実行することで、任意の文章に対するオリジナル辞書の検証を行えます
 
 ```bash
-$ npm run test-dict ユーザー辞書を探す
+$ npm run test-dict ユーザー辞書でググる
 
 -- sample_text --
-ユーザー辞書を探す
+ユーザー辞書でググる
 ----------------
 word_id,word_type,word_position,surface_form,pos,pos_detail_1,pos_detail_2,pos_detail_3,conjugated_type,conjugated_form,basic_form,reading,pronunciation
 3921260,KNOWN,1,ユーザー辞書,名詞,一般,*,*,*,*,ユーザー辞書,ユーザージショ,ユーザージショ
-2595140,KNOWN,7,を,助詞,格助詞,一般,*,*,*,を,ヲ,ヲ
-2923480,KNOWN,8,探す,動詞,自立,*,*,五段・サ行,基本形,探す,サガス,サガス
+306440,KNOWN,7,で,接続詞,*,*,*,*,*,で,デ,デ
+3921290,KNOWN,8,ググる,動詞,自立,*,*,一段,基本形,ググる,ググル,ググル
 ----------------
 ```
 
